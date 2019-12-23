@@ -10,11 +10,15 @@ import UIKit
 
 
 class FactsViewController: UIViewController {
+    
     private var countryInfo: CountryInfo!
     private var viewModel: CountryViewModel!
 
     enum Height {
         static let estimated: CGFloat = 100
+    }
+    enum Message {
+        static let initialLoading = "Please wait..."
     }
     
     //MARK:- Programatically UITableView creation
@@ -27,17 +31,30 @@ class FactsViewController: UIViewController {
         return tableView
     }()
 
-    
+    lazy var messageLabel : UILabel = {
+        let label = UILabel()
+        label.textColor = .gray
+        label.font = UIFont.systemFont(ofSize: 21)
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        label.sizeToFit()
+        return label
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Navbar"
         setupTableView()
+        setUpEmptyOrErrorLabel()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         viewModel = CountryViewModel(delegate: self)
         viewModel.fetchAPI()
+        viewModel.updateNavigationTitle = { [weak self] () in
+            self?.title = self?.viewModel.countryTitle
+        }
+
     }
     
 
@@ -57,6 +74,12 @@ extension FactsViewController {
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
             ])
     }
+    
+    private func setUpEmptyOrErrorLabel() {
+        tableView.backgroundView = messageLabel
+        messageLabel.text = Message.initialLoading
+    }
+
 }
 
 // MARK: UITableViewDataSource

@@ -20,6 +20,12 @@ class CountryViewModel {
     init(delegate: CallbacklDelegate) {
         self.delegate = delegate
     }
+    
+    internal var countryTitle: String? {
+        didSet {
+            updateNavigationTitle?()
+        }
+    }
 
     func fetchAPI() {
         APIEngine().fetchCountryInfo(url: Url.feedUrl) { [weak self] (result) in
@@ -29,6 +35,7 @@ class CountryViewModel {
                 case .failure(let error):
                     self?.delegate?.onFetchFailed(with: error)
                 case .success(let results):
+                    self?.countryTitle = results.title ?? ""
                     self?.delegate?.onFetchCompleted(with: results)
                 }
             }
