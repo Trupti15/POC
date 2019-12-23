@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 final class FactView: UIView {
     enum Constant {
@@ -20,7 +21,6 @@ final class FactView: UIView {
         imageView.layer.masksToBounds = true
         imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = #imageLiteral(resourceName: "imageNotAvailable")
         return imageView
     }()
     
@@ -81,6 +81,7 @@ final class FactView: UIView {
 
 extension FactView {
     func setImage(imageUrl: String?, placeHolder: String) {
+        imageView.sd_setImage(with: URL(string: imageUrl ?? ""), placeholderImage: UIImage(named: "imageNotAvailable"))
     }
 
     var titleText: String? {
