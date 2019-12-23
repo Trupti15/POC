@@ -10,15 +10,12 @@ import UIKit
 
 class FactsTableViewCell: UITableViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    var facts: Facts? {
+        didSet {
+            guard let facts = facts else {
+                return
+            }
+            //config UI
+        }
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
 }

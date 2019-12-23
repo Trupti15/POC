@@ -13,6 +13,7 @@ class FactsViewController: UIViewController {
     
     private var countryInfo: CountryInfo!
     private var viewModel: CountryViewModel!
+    private var refreshControl: UIRefreshControl!
 
     enum Height {
         static let estimated: CGFloat = 100
@@ -43,6 +44,7 @@ class FactsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setRrefreshControl()
         setupTableView()
         setUpEmptyOrErrorLabel()
     }
@@ -66,7 +68,8 @@ extension FactsViewController {
         tableView.register(FactsTableViewCell.self, forCellReuseIdentifier: FactsTableViewCell.identifier)
         view.addSubview(tableView)
         tableView.dataSource = self
-        
+        tableView.refreshControl = refreshControl
+
         NSLayoutConstraint.activate([
             tableView.leftAnchor.constraint(equalTo: view.leftAnchor),
             tableView.rightAnchor.constraint(equalTo: view.rightAnchor),
@@ -79,6 +82,19 @@ extension FactsViewController {
         tableView.backgroundView = messageLabel
         messageLabel.text = Message.initialLoading
     }
+    
+    private func setRrefreshControl() {
+        refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
+        refreshControl.backgroundColor = UIColor.lightGray
+        refreshControl.attributedTitle = NSAttributedString(string: "Fetching")
+        refreshControl.tintColor = .white
+    }
+    
+    @objc func refreshData(_ refreshControl: UIRefreshControl) {
+        viewModel.fetchAPI()
+    }
+
 
 }
 
@@ -93,6 +109,8 @@ extension FactsViewController: UITableViewDataSource {
             fatalError(" Please check TableViewCell identifier")
         }
         let _ = countryInfo.facts?[indexPath.row]
+        //config cell
+        cell.selectionStyle = .none
         return cell
     }
 }
@@ -106,5 +124,7 @@ extension FactsViewController: CallbacklDelegate {
     }
     
     func onFetchFailed(with reason: String) {
+        tableView.backgroundView = messageLabel
+        messageLabel.text = reason
     }
 }
