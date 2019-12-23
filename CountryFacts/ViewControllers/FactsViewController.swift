@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 class FactsViewController: UIViewController {
     
     private var countryInfo: CountryInfo!
@@ -101,7 +100,6 @@ extension FactsViewController {
         viewModel.fetchAPI()
     }
 
-
 }
 
 // MARK: UITableViewDataSource
@@ -114,8 +112,8 @@ extension FactsViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: FactsTableViewCell.identifier) as? FactsTableViewCell else {
             fatalError(" Please check TableViewCell identifier")
         }
-        let _ = countryInfo.facts?[indexPath.row]
-        //config cell
+        let factsInfo = countryInfo.facts?[indexPath.row]
+        cell.facts = factsInfo
         cell.selectionStyle = .none
         return cell
     }
