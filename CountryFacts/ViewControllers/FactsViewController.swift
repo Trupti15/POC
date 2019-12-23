@@ -29,6 +29,7 @@ class FactsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Navbar"
         setupTableView()
     }
 
