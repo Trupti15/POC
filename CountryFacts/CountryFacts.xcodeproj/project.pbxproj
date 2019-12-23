@@ -98,11 +98,14 @@
 			isa = PBXGroup;
 			children = (
 				C7376D7C23B08E7900E50EFE /* AppDelegate.swift */,
-				C7376D7E23B08E7A00E50EFE /* FactsViewController.swift */,
-				C7376D8023B08E7A00E50EFE /* Main.storyboard */,
-				C7376D8323B08E7E00E50EFE /* Assets.xcassets */,
-				C7376D8523B08E7E00E50EFE /* LaunchScreen.storyboard */,
 				C7376D8823B08E7E00E50EFE /* Info.plist */,
+				C7376DAC23B0934800E50EFE /* Models */,
+				C7376DAD23B0934800E50EFE /* Networking */,
+				C7376DB023B093A000E50EFE /* Resources */,
+				C7376DAF23B093A000E50EFE /* Utilitis */,
+				C7376DAA23B0933B00E50EFE /* ViewControllers */,
+				C7376DAE23B0934800E50EFE /* ViewModels */,
+				C7376DAB23B0934800E50EFE /* Views */,
 			);
 			path = CountryFacts;
 			sourceTree = "<group>";
@@ -124,6 +127,60 @@
 			);
 			path = CountryFactsUITests;
 			sourceTree = "<group>";
+		};
+		C7376DAA23B0933B00E50EFE /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				C7376D7E23B08E7A00E50EFE /* FactsViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = SOURCE_ROOT;
+		};
+		C7376DAB23B0934800E50EFE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = SOURCE_ROOT;
+		};
+		C7376DAC23B0934800E50EFE /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = SOURCE_ROOT;
+		};
+		C7376DAD23B0934800E50EFE /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Networking;
+			path = CountryFacts/Networking;
+			sourceTree = SOURCE_ROOT;
+		};
+		C7376DAE23B0934800E50EFE /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = SOURCE_ROOT;
+		};
+		C7376DAF23B093A000E50EFE /* Utilitis */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utilitis;
+			sourceTree = SOURCE_ROOT;
+		};
+		C7376DB023B093A000E50EFE /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C7376D8323B08E7E00E50EFE /* Assets.xcassets */,
+				C7376D8523B08E7E00E50EFE /* LaunchScreen.storyboard */,
+				C7376D8023B08E7A00E50EFE /* Main.storyboard */,
+			);
+			path = Resources;
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
