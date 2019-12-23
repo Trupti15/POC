@@ -21,12 +21,15 @@ class CountryViewModel {
         self.delegate = delegate
     }
     
-    internal var countryTitle: String? {
+    var countryTitle: String? {
         didSet {
             updateNavigationTitle?()
         }
     }
+}
 
+//MARK:- API Response
+extension CountryViewModel {
     func fetchAPI() {
         APIEngine().fetchCountryInfo(url: Url.feedUrl) { [weak self] (result) in
             DispatchQueue.main.async {
@@ -36,9 +39,17 @@ class CountryViewModel {
                     self?.delegate?.onFetchFailed(with: error)
                 case .success(let results):
                     self?.countryTitle = results.title ?? ""
-                    self?.delegate?.onFetchCompleted(with: results)
+                    let processedResult = self?.removeDataWithNoTitle(result: results)
+                    self?.delegate?.onFetchCompleted(with: processedResult!)
                 }
             }
         }
+    }
+    
+    func removeDataWithNoTitle(result: CountryInfo) -> CountryInfo {
+        let countryTitle = result.title ?? ""
+        guard let facts = result.facts else { return result }
+        let filteredFacts = facts.filter({ $0.title != nil })
+        return CountryInfo(title: countryTitle, facts: filteredFacts)
     }
 }

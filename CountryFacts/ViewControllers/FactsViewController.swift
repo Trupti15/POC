@@ -123,7 +123,6 @@ extension FactsViewController: UITableViewDataSource {
 extension FactsViewController: CallbacklDelegate {
     func onFetchCompleted(with result: CountryInfo) {
         countryInfo = result
-        print(countryInfo)
         tableView.reloadData()
     }
     

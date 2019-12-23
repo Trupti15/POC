@@ -11,7 +11,12 @@ import Foundation
 final class APIEngine {
 
     private var dataTask: URLSessionDataTask?
+    private var session: URLSession
     
+    init(session: URLSession = URLSession(configuration: .default)) {
+        self.session = session
+    }
+
     func fetchCountryInfo(url: String, onCompletion: @escaping (Result<CountryInfo>) -> Void) {
         guard let url = URL(string: url) else { return }
         dataTask?.cancel()
