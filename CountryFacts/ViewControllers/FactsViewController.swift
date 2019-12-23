@@ -56,9 +56,15 @@ class FactsViewController: UIViewController {
         viewModel.updateNavigationTitle = { [weak self] () in
             self?.title = self?.viewModel.countryTitle
         }
-
+        
+        //hide the refreshControl, on response received
+        viewModel.updateRefreshControl = { [weak self] () in
+            guard
+                let refreshControl = self?.refreshControl,
+                refreshControl.isRefreshing else { return }
+            refreshControl.endRefreshing()
+        }
     }
-    
 
 }
 
