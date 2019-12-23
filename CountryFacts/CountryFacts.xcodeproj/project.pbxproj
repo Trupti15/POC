@@ -29,6 +29,9 @@
 		C7376DC223B09F0800E50EFE /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7376DC123B09F0800E50EFE /* Route.swift */; };
 		C7376DC323B09F0800E50EFE /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7376DC123B09F0800E50EFE /* Route.swift */; };
 		C7376DC423B09F0800E50EFE /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7376DC123B09F0800E50EFE /* Route.swift */; };
+		C7376DC623B0A7D700E50EFE /* CountryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7376DC523B0A7D700E50EFE /* CountryViewModel.swift */; };
+		C7376DC723B0A7D700E50EFE /* CountryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7376DC523B0A7D700E50EFE /* CountryViewModel.swift */; };
+		C7376DC823B0A7D700E50EFE /* CountryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7376DC523B0A7D700E50EFE /* CountryViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +70,7 @@
 		C7376DB923B099E700E50EFE /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		C7376DBD23B09EF100E50EFE /* APIEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEngine.swift; sourceTree = "<group>"; };
 		C7376DC123B09F0800E50EFE /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
+		C7376DC523B0A7D700E50EFE /* CountryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,6 +189,7 @@
 		C7376DAE23B0934800E50EFE /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				C7376DC523B0A7D700E50EFE /* CountryViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = SOURCE_ROOT;
@@ -339,6 +344,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C7376DC223B09F0800E50EFE /* Route.swift in Sources */,
+				C7376DC623B0A7D700E50EFE /* CountryViewModel.swift in Sources */,
 				C7376DBA23B099E700E50EFE /* Extension.swift in Sources */,
 				C7376D7F23B08E7A00E50EFE /* FactsViewController.swift in Sources */,
 				C7376D7D23B08E7900E50EFE /* AppDelegate.swift in Sources */,
@@ -357,6 +363,7 @@
 				C7376DB323B094F600E50EFE /* CountryInfo.swift in Sources */,
 				C7376DBF23B09EF100E50EFE /* APIEngine.swift in Sources */,
 				C7376D9223B08E7E00E50EFE /* CountryFactsTests.swift in Sources */,
+				C7376DC723B0A7D700E50EFE /* CountryViewModel.swift in Sources */,
 				C7376DBB23B099E700E50EFE /* Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -370,6 +377,7 @@
 				C7376DB423B094F600E50EFE /* CountryInfo.swift in Sources */,
 				C7376DC023B09EF100E50EFE /* APIEngine.swift in Sources */,
 				C7376D9D23B08E7E00E50EFE /* CountryFactsUITests.swift in Sources */,
+				C7376DC823B0A7D700E50EFE /* CountryViewModel.swift in Sources */,
 				C7376DBC23B099E700E50EFE /* Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

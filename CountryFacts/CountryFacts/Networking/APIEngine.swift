@@ -43,5 +43,6 @@ final class APIEngine {
             }
             onCompletion(Result.success(decodedResponse))
         })
+        dataTask?.resume()
     }
 }

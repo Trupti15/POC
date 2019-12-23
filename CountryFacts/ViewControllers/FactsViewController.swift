@@ -11,6 +11,7 @@ import UIKit
 
 class FactsViewController: UIViewController {
     private var countryInfo: CountryInfo!
+    private var viewModel: CountryViewModel!
 
     enum Height {
         static let estimated: CGFloat = 100
@@ -33,6 +34,11 @@ class FactsViewController: UIViewController {
         setupTableView()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel = CountryViewModel(delegate: self)
+        viewModel.fetchAPI()
+    }
     
 
 }
@@ -65,5 +71,17 @@ extension FactsViewController: UITableViewDataSource {
         }
         let _ = countryInfo.facts?[indexPath.row]
         return cell
+    }
+}
+
+// MARK: Callback on getting response
+extension FactsViewController: CallbacklDelegate {
+    func onFetchCompleted(with result: CountryInfo) {
+        countryInfo = result
+        print(countryInfo)
+        tableView.reloadData()
+    }
+    
+    func onFetchFailed(with reason: String) {
     }
 }
