@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C7376D7D23B08E7900E50EFE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7376D7C23B08E7900E50EFE /* AppDelegate.swift */; };
-		C7376D7F23B08E7A00E50EFE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7376D7E23B08E7A00E50EFE /* ViewController.swift */; };
+		C7376D7F23B08E7A00E50EFE /* FactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7376D7E23B08E7A00E50EFE /* FactsViewController.swift */; };
 		C7376D8223B08E7A00E50EFE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7376D8023B08E7A00E50EFE /* Main.storyboard */; };
 		C7376D8423B08E7E00E50EFE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7376D8323B08E7E00E50EFE /* Assets.xcassets */; };
 		C7376D8723B08E7E00E50EFE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7376D8523B08E7E00E50EFE /* LaunchScreen.storyboard */; };
@@ -36,7 +36,7 @@
 /* Begin PBXFileReference section */
 		C7376D7923B08E7900E50EFE /* CountryFacts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CountryFacts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7376D7C23B08E7900E50EFE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C7376D7E23B08E7A00E50EFE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C7376D7E23B08E7A00E50EFE /* FactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactsViewController.swift; sourceTree = "<group>"; };
 		C7376D8123B08E7A00E50EFE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C7376D8323B08E7E00E50EFE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C7376D8623B08E7E00E50EFE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -98,7 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				C7376D7C23B08E7900E50EFE /* AppDelegate.swift */,
-				C7376D7E23B08E7A00E50EFE /* ViewController.swift */,
+				C7376D7E23B08E7A00E50EFE /* FactsViewController.swift */,
 				C7376D8023B08E7A00E50EFE /* Main.storyboard */,
 				C7376D8323B08E7E00E50EFE /* Assets.xcassets */,
 				C7376D8523B08E7E00E50EFE /* LaunchScreen.storyboard */,
@@ -256,7 +256,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C7376D7F23B08E7A00E50EFE /* ViewController.swift in Sources */,
+				C7376D7F23B08E7A00E50EFE /* FactsViewController.swift in Sources */,
 				C7376D7D23B08E7900E50EFE /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -435,6 +435,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SF7DB4V6DK;
 				INFOPLIST_FILE = CountryFacts/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -453,6 +454,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SF7DB4V6DK;
 				INFOPLIST_FILE = CountryFacts/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
