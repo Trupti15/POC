@@ -3,14 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		84086A540BD8617621DFE3EF /* Pods_CountryFacts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C492AD4682C8AE3715071D5B /* Pods_CountryFacts.framework */; };
 		C7376D7D23B08E7900E50EFE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7376D7C23B08E7900E50EFE /* AppDelegate.swift */; };
 		C7376D7F23B08E7A00E50EFE /* FactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7376D7E23B08E7A00E50EFE /* FactsViewController.swift */; };
-		C7376D8223B08E7A00E50EFE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7376D8023B08E7A00E50EFE /* Main.storyboard */; };
 		C7376D8423B08E7E00E50EFE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7376D8323B08E7E00E50EFE /* Assets.xcassets */; };
 		C7376D8723B08E7E00E50EFE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7376D8523B08E7E00E50EFE /* LaunchScreen.storyboard */; };
 		C7376D9223B08E7E00E50EFE /* CountryFactsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7376D9123B08E7E00E50EFE /* CountryFactsTests.swift */; };
@@ -62,7 +61,6 @@
 		C7376D7923B08E7900E50EFE /* CountryFacts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CountryFacts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7376D7C23B08E7900E50EFE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C7376D7E23B08E7A00E50EFE /* FactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactsViewController.swift; sourceTree = "<group>"; };
-		C7376D8123B08E7A00E50EFE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C7376D8323B08E7E00E50EFE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C7376D8623B08E7E00E50EFE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C7376D8823B08E7E00E50EFE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -113,7 +111,6 @@
 				9DEFDD6C7659D3AA9FE5D419 /* Pods-CountryFacts.debug.xcconfig */,
 				C0D68ED5029F795093DBCB9F /* Pods-CountryFacts.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -237,7 +234,6 @@
 			children = (
 				C7376D8323B08E7E00E50EFE /* Assets.xcassets */,
 				C7376D8523B08E7E00E50EFE /* LaunchScreen.storyboard */,
-				C7376D8023B08E7A00E50EFE /* Main.storyboard */,
 			);
 			path = Resources;
 			sourceTree = SOURCE_ROOT;
@@ -350,7 +346,6 @@
 			files = (
 				C7376D8723B08E7E00E50EFE /* LaunchScreen.storyboard in Resources */,
 				C7376D8423B08E7E00E50EFE /* Assets.xcassets in Resources */,
-				C7376D8223B08E7A00E50EFE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -475,14 +470,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		C7376D8023B08E7A00E50EFE /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C7376D8123B08E7A00E50EFE /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		C7376D8523B08E7E00E50EFE /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
