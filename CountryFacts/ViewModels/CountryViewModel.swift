@@ -32,15 +32,16 @@ class CountryViewModel {
 extension CountryViewModel {
     func fetchAPI() {
         APIEngine().fetchCountryInfo(url: Url.feedUrl) { [weak self] (result) in
+            guard let self = self else { return }
             DispatchQueue.main.async {
-                self?.updateRefreshControl?()
+                self.updateRefreshControl?()
                 switch result {
                 case .failure(let error):
-                    self?.delegate?.onFetchFailed(with: error)
+                    self.delegate?.onFetchFailed(with: error)
                 case .success(let results):
-                    self?.countryTitle = results.title ?? ""
-                    let processedResult = self?.removeDataWithNoTitle(result: results)
-                    self?.delegate?.onFetchCompleted(with: processedResult!)
+                    self.countryTitle = results.title ?? ""
+                    let processedResult = self.removeDataWithNoTitle(result: results)
+                    self.delegate?.onFetchCompleted(with: processedResult)
                 }
             }
         }

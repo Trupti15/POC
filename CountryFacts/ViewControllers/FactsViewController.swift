@@ -53,14 +53,15 @@ class FactsViewController: UIViewController {
         viewModel = CountryViewModel(delegate: self)
         viewModel.fetchAPI()
         viewModel.updateNavigationTitle = { [weak self] () in
-            self?.title = self?.viewModel.countryTitle
+            guard let self = self else { return }
+            self.title = self.viewModel.countryTitle
         }
         
         //hide the refreshControl, on response received
         viewModel.updateRefreshControl = { [weak self] () in
-            guard
-                let refreshControl = self?.refreshControl,
-                refreshControl.isRefreshing else { return }
+            guard let self = self, let refreshControl = self.refreshControl else {
+                return
+            }
             refreshControl.endRefreshing()
         }
     }

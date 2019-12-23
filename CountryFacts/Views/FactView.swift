@@ -15,7 +15,7 @@ final class FactView: UIView {
         static let imageSize = (width: CGFloat(70), height: CGFloat(70))
     }
     
-    private let imageView : UIImageView = {
+    private lazy var imageView : UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.layer.masksToBounds = true
@@ -24,7 +24,7 @@ final class FactView: UIView {
         return imageView
     }()
     
-    private let titleLabel : UILabel = {
+    private lazy var titleLabel : UILabel = {
         let label = UILabel()
         label.textColor = .black
         label.font = UIFont.boldSystemFont(ofSize: 18)
@@ -34,7 +34,7 @@ final class FactView: UIView {
         return label
     }()
     
-    private let descriptionLabel : UILabel = {
+    private lazy var descriptionLabel : UILabel = {
         let label = UILabel()
         label.textColor = .gray
         label.font = UIFont.systemFont(ofSize: 17)
