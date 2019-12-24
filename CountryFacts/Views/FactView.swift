@@ -37,7 +37,7 @@ final class FactView: UIView {
       arrangedSubviews: [self.titleLabel, self.descriptionLabel]
     )
     stackView.axis = .vertical
-    stackView.spacing = Size.margin
+    stackView.spacing = Height.margin
     stackView.alignment = .fill
     stackView.distribution = .fill
     stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -59,7 +59,7 @@ final class FactView: UIView {
       arrangedSubviews: [self.imageView, self.verticalStackView]
     )
     stackView.axis = .horizontal
-    stackView.spacing = 2*Size.margin
+    stackView.spacing = 2*Height.margin
     stackView.alignment = .top
     stackView.distribution = .fill
     stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -81,8 +81,8 @@ final class FactView: UIView {
     addSubview(stackView)
     
     NSLayoutConstraint.activate([
-      imageView.widthAnchor.constraint(equalToConstant: Size.imageHeight),
-      imageView.heightAnchor.constraint(equalToConstant: Size.imageHeight),
+      imageView.widthAnchor.constraint(equalToConstant: Size.image.width),
+      imageView.heightAnchor.constraint(equalToConstant: Size.image.height),
       stackView.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor),
       stackView.bottomAnchor.constraint(equalTo: layoutMarginsGuide.bottomAnchor),
       stackView.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),

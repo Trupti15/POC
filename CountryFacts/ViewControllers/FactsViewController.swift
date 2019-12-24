@@ -20,7 +20,7 @@ class FactsViewController: UIViewController {
     tableView.translatesAutoresizingMaskIntoConstraints = false
     tableView.estimatedRowHeight = Height.factTableEstimated
     tableView.rowHeight = UITableView.automaticDimension
-    tableView.tableFooterView = UIView(frame: CGRect.zero)
+    tableView.tableFooterView = UIView(frame: .zero)
     return tableView
   }()
   
@@ -52,9 +52,7 @@ class FactsViewController: UIViewController {
     
     //hide the refreshControl, on response received
     viewModel.updateRefreshControl = { [weak self] () in
-      guard let self = self, let refreshControl = self.refreshControl else {
-        return
-      }
+      guard let self = self, let refreshControl = self.refreshControl else { return }
       refreshControl.endRefreshing()
     }
   }

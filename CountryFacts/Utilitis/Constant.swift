@@ -16,14 +16,13 @@ enum Font {
 }
 
 enum Size {
-  static let margin: CGFloat = 8
-  static let imageHeight: CGFloat = 70
+  static let image = (width: CGFloat(120), height: CGFloat(120))
 }
 
 enum Height {
   static let factTableEstimated: CGFloat = 100
   static let factTableCellMinimum: CGFloat = 100
-  
+  static let margin: CGFloat = 8
 }
 
 enum Message {
