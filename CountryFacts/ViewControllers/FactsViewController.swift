@@ -58,7 +58,6 @@ class FactsViewController: UIViewController {
             refreshControl.endRefreshing()
         }
     }
-
 }
 
 //MARK:-   UI Setup

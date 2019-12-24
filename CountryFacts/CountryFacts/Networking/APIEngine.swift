@@ -16,12 +16,13 @@ final class APIEngine {
     init(session: URLSession = URLSession(configuration: .default)) {
         self.session = session
     }
-
-    func fetchCountryInfo(url: String, onCompletion: @escaping (Result<CountryInfo>) -> Void) {
+    
+    func enQueueRequest(url: String, onCompletion: @escaping (Result<CountryInfo>) -> Void) {
         guard let url = URL(string: url) else { return }
-        dataTask?.cancel()
         
+        dataTask?.cancel()
         let request = URLRequest(url: url)
+        
         dataTask = session.dataTask(with: request, completionHandler: { (data, response, error) in
             defer { self.dataTask = nil }
             
@@ -50,4 +51,15 @@ final class APIEngine {
         })
         dataTask?.resume()
     }
+}
+
+//MARK:- APIs
+extension APIEngine {
+    
+    func fetchCountryInfo(url: String, onCompletion: @escaping (Result<CountryInfo>) -> Void) {
+        enQueueRequest(url: url) { (result) in
+            onCompletion(result)
+        }
+    }
+
 }

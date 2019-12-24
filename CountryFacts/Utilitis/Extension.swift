@@ -7,11 +7,17 @@
 //
 
 import UIKit
+
+/*
+ Used to avoide using of hardcoded tableCell name
+ *
+ */
+
 protocol Identifier { }
 
-extension Identifier where Self: UIView {
+extension Identifier where Self: UITableViewCell {
     static var identifier: String {
         return String(describing: self)
     }
 }
-extension UIView: Identifier {}
+extension UITableViewCell: Identifier {}

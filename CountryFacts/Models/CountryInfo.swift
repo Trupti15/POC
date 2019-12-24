@@ -8,6 +8,17 @@
 
 import Foundation
 
+/*
+ {
+ "title":"About Canada",
+ "rows":[ {
+    "title":"",
+    "description":"",
+    "imageHref":""
+    } ]
+ }
+ */
+
 struct CountryInfo: Codable {
     
     var title: String?
