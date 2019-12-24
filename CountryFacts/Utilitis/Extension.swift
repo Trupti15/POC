@@ -16,8 +16,8 @@ import UIKit
 protocol Identifier { }
 
 extension Identifier where Self: UITableViewCell {
-    static var identifier: String {
-        return String(describing: self)
-    }
+  static var identifier: String {
+    return String(describing: self)
+  }
 }
 extension UITableViewCell: Identifier {}

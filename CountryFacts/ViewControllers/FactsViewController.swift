@@ -9,118 +9,118 @@
 import UIKit
 
 class FactsViewController: UIViewController {
-    
-    private var countryInfo: CountryInfo!
-    private var viewModel: CountryViewModel!
-    private var refreshControl: UIRefreshControl!
-    
-    //MARK:- Programatically UITableView creation
-    private lazy var tableView : UITableView = {
-        let tableView = UITableView()
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.estimatedRowHeight = Height.factTableEstimated
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.tableFooterView = UIView(frame: CGRect.zero)
-        return tableView
-    }()
-
-    lazy var messageLabel : UILabel = {
-        let label = UILabel()
-        label.textColor = .gray
-        label.font = UIFont(name: Font.regular, size: 18)
-        label.textAlignment = .center
-        label.numberOfLines = 0
-        label.sizeToFit()
-        return label
-    }()
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setRrefreshControl()
-        setupTableView()
-        setUpEmptyOrErrorLabel()
+  
+  private var countryInfo: CountryInfo!
+  private var viewModel: CountryViewModel!
+  private var refreshControl: UIRefreshControl!
+  
+  //MARK:- Programatically UITableView creation
+  private lazy var tableView : UITableView = {
+    let tableView = UITableView()
+    tableView.translatesAutoresizingMaskIntoConstraints = false
+    tableView.estimatedRowHeight = Height.factTableEstimated
+    tableView.rowHeight = UITableView.automaticDimension
+    tableView.tableFooterView = UIView(frame: CGRect.zero)
+    return tableView
+  }()
+  
+  lazy var messageLabel : UILabel = {
+    let label = UILabel()
+    label.textColor = .gray
+    label.font = UIFont(name: Font.regular, size: 18)
+    label.textAlignment = .center
+    label.numberOfLines = 0
+    label.sizeToFit()
+    return label
+  }()
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    setRrefreshControl()
+    setupTableView()
+    setUpEmptyOrErrorLabel()
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    viewModel = CountryViewModel(delegate: self)
+    viewModel.fetchAPI()
+    viewModel.updateNavigationTitle = { [weak self] () in
+      guard let self = self else { return }
+      self.title = self.viewModel.countryTitle
     }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        viewModel = CountryViewModel(delegate: self)
-        viewModel.fetchAPI()
-        viewModel.updateNavigationTitle = { [weak self] () in
-            guard let self = self else { return }
-            self.title = self.viewModel.countryTitle
-        }
-        
-        //hide the refreshControl, on response received
-        viewModel.updateRefreshControl = { [weak self] () in
-            guard let self = self, let refreshControl = self.refreshControl else {
-                return
-            }
-            refreshControl.endRefreshing()
-        }
+    
+    //hide the refreshControl, on response received
+    viewModel.updateRefreshControl = { [weak self] () in
+      guard let self = self, let refreshControl = self.refreshControl else {
+        return
+      }
+      refreshControl.endRefreshing()
     }
+  }
 }
 
 //MARK:-   UI Setup
 extension FactsViewController {
-    func setupTableView() {
-        tableView.register(FactsTableViewCell.self, forCellReuseIdentifier: FactsTableViewCell.identifier)
-        view.addSubview(tableView)
-        tableView.dataSource = self
-        tableView.refreshControl = refreshControl
-
-        NSLayoutConstraint.activate([
-            tableView.leftAnchor.constraint(equalTo: view.leftAnchor),
-            tableView.rightAnchor.constraint(equalTo: view.rightAnchor),
-            tableView.topAnchor.constraint(equalTo: view.topAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-            ])
-    }
+  func setupTableView() {
+    tableView.register(FactsTableViewCell.self, forCellReuseIdentifier: FactsTableViewCell.identifier)
+    view.addSubview(tableView)
+    tableView.dataSource = self
+    tableView.refreshControl = refreshControl
     
-    private func setUpEmptyOrErrorLabel() {
-        tableView.backgroundView = messageLabel
-        messageLabel.text = Message.initialLoading
-    }
-    
-    private func setRrefreshControl() {
-        refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
-        refreshControl.backgroundColor = UIColor.lightGray
-        refreshControl.attributedTitle = NSAttributedString(string: Message.pullToRefresh)
-        refreshControl.tintColor = .white
-    }
-    
-    @objc func refreshData(_ refreshControl: UIRefreshControl) {
-        viewModel.fetchAPI()
-    }
-
+    NSLayoutConstraint.activate([
+      tableView.leftAnchor.constraint(equalTo: view.leftAnchor),
+      tableView.rightAnchor.constraint(equalTo: view.rightAnchor),
+      tableView.topAnchor.constraint(equalTo: view.topAnchor),
+      tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+      ])
+  }
+  
+  private func setUpEmptyOrErrorLabel() {
+    tableView.backgroundView = messageLabel
+    messageLabel.text = Message.initialLoading
+  }
+  
+  private func setRrefreshControl() {
+    refreshControl = UIRefreshControl()
+    refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
+    refreshControl.backgroundColor = UIColor.lightGray
+    refreshControl.attributedTitle = NSAttributedString(string: Message.pullToRefresh)
+    refreshControl.tintColor = .white
+  }
+  
+  @objc func refreshData(_ refreshControl: UIRefreshControl) {
+    viewModel.fetchAPI()
+  }
+  
 }
 
 // MARK: UITableViewDataSource
 extension FactsViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return countryInfo?.facts?.count ?? 0
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return countryInfo?.facts?.count ?? 0
+  }
+  
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    guard let cell = tableView.dequeueReusableCell(withIdentifier: FactsTableViewCell.identifier) as? FactsTableViewCell else {
+      fatalError(" Please check FactsTableViewCell identifier")
     }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: FactsTableViewCell.identifier) as? FactsTableViewCell else {
-            fatalError(" Please check FactsTableViewCell identifier")
-        }
-        let factsInfo = countryInfo.facts?[indexPath.row]
-        cell.facts = factsInfo
-        cell.selectionStyle = .none
-        return cell
-    }
+    let factsInfo = countryInfo.facts?[indexPath.row]
+    cell.facts = factsInfo
+    cell.selectionStyle = .none
+    return cell
+  }
 }
 
 // MARK: Callback on getting response
 extension FactsViewController: CallbacklDelegate {
-    func onFetchCompleted(with result: CountryInfo) {
-        countryInfo = result
-        tableView.reloadData()
-    }
-    
-    func onFetchFailed(with reason: String) {
-        tableView.backgroundView = messageLabel
-        messageLabel.text = reason
-    }
+  func onFetchCompleted(with result: CountryInfo) {
+    countryInfo = result
+    tableView.reloadData()
+  }
+  
+  func onFetchFailed(with reason: String) {
+    tableView.backgroundView = messageLabel
+    messageLabel.text = reason
+  }
 }

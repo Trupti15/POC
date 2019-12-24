@@ -9,39 +9,39 @@
 import Foundation
 
 enum Url {
-    static let feedUrl = "https://api.myjson.com/bins/ao19k"
-//    static let feedUrl = "https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json"
-    
+  static let feedUrl = "https://api.myjson.com/bins/ao19k"
+  //    static let feedUrl = "https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json"
+  
 }
 
 //MARK:- Response status code
 extension HTTPURLResponse {
-    var hasSuccessStatusCode: Bool {
-        return 200...299 ~= statusCode
-    }
+  var hasSuccessStatusCode: Bool {
+    return 200...299 ~= statusCode
+  }
 }
 
 
 //MARK:- NetworkError Message
 enum NetworkError: Error {
-    case network
-    case fetching
-    case decoding
-    
-    var reason: String {
-        switch self {
-        case .network:
-            return "No Internet connection, \n Please check connectivity"
-        case .fetching:
-            return "An error occurred while fetching data \n Pull to refresh"
-        case .decoding:
-            return "An error occurred while decoding data \n Please try again"
-        }
+  case network
+  case fetching
+  case decoding
+  
+  var reason: String {
+    switch self {
+    case .network:
+      return "No Internet connection, \n Please check connectivity"
+    case .fetching:
+      return "An error occurred while fetching data \n Pull to refresh"
+    case .decoding:
+      return "An error occurred while decoding data \n Please try again"
     }
+  }
 }
 
 //MARK:- Response: Success or Failure
 enum Result<T> {
-    case success(T)
-    case failure(String)
+  case success(T)
+  case failure(String)
 }
