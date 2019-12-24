@@ -11,7 +11,7 @@ import SDWebImage
 
 final class FactView: UIView {
     enum Constant {
-        static let padding: CGFloat = 16
+        static let padding: CGFloat = 8
         static let imageSize = (width: CGFloat(70), height: CGFloat(70))
     }
     
@@ -44,6 +44,14 @@ final class FactView: UIView {
         return label
     }()
     
+    lazy var stackView: UIStackView = {
+        let stackView = UIStackView(
+            arrangedSubviews: [self.titleLabel, self.descriptionLabel]
+        )
+        stackView.axis = .vertical
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
+    }()
     
     //MARK: init
     required public init?(coder: NSCoder) {
@@ -58,23 +66,18 @@ final class FactView: UIView {
     
     private func initPhase2() {
         addSubview(imageView)
-        addSubview(titleLabel)
-        addSubview(descriptionLabel)
+        addSubview(stackView)
         
         NSLayoutConstraint.activate([
-            imageView.topAnchor.constraint(equalTo: self.topAnchor, constant: Constant.padding),
-            imageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Constant.padding),
+            imageView.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor),
+            imageView.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
             imageView.widthAnchor.constraint(equalToConstant: Constant.imageSize.width),
             imageView.heightAnchor.constraint(equalToConstant: Constant.imageSize.height),
             
-            titleLabel.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: Constant.padding),
-            titleLabel.topAnchor.constraint(equalTo: imageView.topAnchor),
-            titleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant:  -Constant.padding),
-            
-            descriptionLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
-            descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: Constant.padding/2),
-            descriptionLabel.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
-            descriptionLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -Constant.padding)
+            stackView.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor),
+            stackView.bottomAnchor.constraint(equalTo: layoutMarginsGuide.bottomAnchor),
+            stackView.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: Constant.padding),
+            stackView.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
             ])
     }
 }
@@ -83,7 +86,7 @@ extension FactView {
     func setImage(imageUrl: String?, placeHolder: String) {
         imageView.sd_setImage(with: URL(string: imageUrl ?? ""), placeholderImage: UIImage(named: "imageNotAvailable"))
     }
-
+    
     var titleText: String? {
         get {
             return titleLabel.text

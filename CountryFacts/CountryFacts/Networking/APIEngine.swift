@@ -22,7 +22,7 @@ final class APIEngine {
         dataTask?.cancel()
         
         let request = URLRequest(url: url)
-        dataTask = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
+        dataTask = session.dataTask(with: request, completionHandler: { (data, response, error) in
             defer { self.dataTask = nil }
             
             //No Internet Connectivity
