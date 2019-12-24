@@ -35,6 +35,7 @@
 		C7376DCA23B0B35300E50EFE /* FactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7376DC923B0B35300E50EFE /* FactView.swift */; };
 		C7376DCB23B0B35300E50EFE /* FactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7376DC923B0B35300E50EFE /* FactView.swift */; };
 		C7376DCC23B0B35300E50EFE /* FactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7376DC923B0B35300E50EFE /* FactView.swift */; };
+		C73B8E9423B1E8A100C93823 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73B8E9323B1E8A100C93823 /* Constant.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,7 @@
 		C7376DC123B09F0800E50EFE /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		C7376DC523B0A7D700E50EFE /* CountryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryViewModel.swift; sourceTree = "<group>"; };
 		C7376DC923B0B35300E50EFE /* FactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactView.swift; sourceTree = "<group>"; };
+		C73B8E9323B1E8A100C93823 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -225,6 +227,7 @@
 			isa = PBXGroup;
 			children = (
 				C7376DB923B099E700E50EFE /* Extension.swift */,
+				C73B8E9323B1E8A100C93823 /* Constant.swift */,
 			);
 			path = Utilitis;
 			sourceTree = SOURCE_ROOT;
@@ -419,6 +422,7 @@
 				C7376D7F23B08E7A00E50EFE /* FactsViewController.swift in Sources */,
 				C7376D7D23B08E7900E50EFE /* AppDelegate.swift in Sources */,
 				C7376DB223B094F600E50EFE /* CountryInfo.swift in Sources */,
+				C73B8E9423B1E8A100C93823 /* Constant.swift in Sources */,
 				C7376DBE23B09EF100E50EFE /* APIEngine.swift in Sources */,
 				C7376DB623B0998900E50EFE /* FactsTableViewCell.swift in Sources */,
 			);

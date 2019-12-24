@@ -9,6 +9,7 @@
 import Foundation
 
 struct CountryInfo: Codable {
+    
     var title: String?
     var facts: [Facts]?
     
@@ -30,6 +31,7 @@ struct CountryInfo: Codable {
 }
 
 struct Facts: Codable {
+    
     var title: String?, description: String?, imageUrl: String?
     
     enum CodingKeys: String, CodingKey {

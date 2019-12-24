@@ -15,8 +15,8 @@ protocol CallbacklDelegate: class {
 
 class CountryViewModel {
     weak var delegate: CallbacklDelegate?
-    var updateNavigationTitle: (()->())?
-    var updateRefreshControl: (()->())?
+    var updateNavigationTitle: (() -> Void)?
+    var updateRefreshControl: (() -> Void)?
     init(delegate: CallbacklDelegate) {
         self.delegate = delegate
     }
@@ -28,7 +28,7 @@ class CountryViewModel {
     }
 }
 
-//MARK:- API Response
+//MARK:- API 
 extension CountryViewModel {
     func fetchAPI() {
         APIEngine().fetchCountryInfo(url: Url.feedUrl) { [weak self] (result) in

@@ -10,10 +10,6 @@ import UIKit
 import SDWebImage
 
 final class FactView: UIView {
-    enum Constant {
-        static let padding: CGFloat = 8
-        static let imageSize = (width: CGFloat(70), height: CGFloat(70))
-    }
     
     private lazy var imageView : UIImageView = {
         let imageView = UIImageView()
@@ -27,7 +23,7 @@ final class FactView: UIView {
     private lazy var titleLabel : UILabel = {
         let label = UILabel()
         label.textColor = .black
-        label.font = UIFont.boldSystemFont(ofSize: 18)
+        label.font = UIFont(name: Font.medium, size: 18.0)
         label.textAlignment = .left
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
@@ -37,22 +33,37 @@ final class FactView: UIView {
     private lazy var descriptionLabel : UILabel = {
         let label = UILabel()
         label.textColor = .gray
-        label.font = UIFont.systemFont(ofSize: 17)
+        label.font = UIFont(name: Font.neue, size: 18.0)
         label.textAlignment = .left
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    lazy var stackView: UIStackView = {
+    lazy var verticalStackView: UIStackView = {
         let stackView = UIStackView(
             arrangedSubviews: [self.titleLabel, self.descriptionLabel]
         )
         stackView.axis = .vertical
+        stackView.spacing = Size.margin
+        stackView.alignment = .fill
+        stackView.distribution = .fill
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
     
+    lazy var stackView: UIStackView = {
+        let stackView = UIStackView(
+            arrangedSubviews: [self.imageView, self.verticalStackView]
+        )
+        stackView.axis = .horizontal
+        stackView.spacing = 2*Size.margin
+        stackView.alignment = .center
+        stackView.distribution = .fill
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
+    }()
+
     //MARK: init
     required public init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -65,18 +76,14 @@ final class FactView: UIView {
     }
     
     private func initPhase2() {
-        addSubview(imageView)
         addSubview(stackView)
         
         NSLayoutConstraint.activate([
-            imageView.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor),
-            imageView.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
-            imageView.widthAnchor.constraint(equalToConstant: Constant.imageSize.width),
-            imageView.heightAnchor.constraint(equalToConstant: Constant.imageSize.height),
-            
+            imageView.widthAnchor.constraint(equalToConstant: Size.imageHeight),
+            imageView.heightAnchor.constraint(equalToConstant: Size.imageHeight),
             stackView.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor),
             stackView.bottomAnchor.constraint(equalTo: layoutMarginsGuide.bottomAnchor),
-            stackView.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: Constant.padding),
+            stackView.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
             stackView.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
             ])
     }
@@ -84,7 +91,11 @@ final class FactView: UIView {
 
 extension FactView {
     func setImage(imageUrl: String?, placeHolder: String) {
-        imageView.sd_setImage(with: URL(string: imageUrl ?? ""), placeholderImage: UIImage(named: "imageNotAvailable"))
+        DispatchQueue.global().async { [weak self] in
+            guard let self  = self else { return }
+            self.imageView.sd_setImage(with: URL(string: imageUrl ?? ""), placeholderImage: UIImage(named: "imageNotAvailable"))
+        }
+
     }
     
     var titleText: String? {

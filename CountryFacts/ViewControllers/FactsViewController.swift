@@ -14,18 +14,12 @@ class FactsViewController: UIViewController {
     private var viewModel: CountryViewModel!
     private var refreshControl: UIRefreshControl!
 
-    enum Height {
-        static let estimated: CGFloat = 100
-    }
-    enum Message {
-        static let initialLoading = "Please wait..."
-    }
     
     //MARK:- Programatically UITableView creation
     private lazy var tableView : UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.estimatedRowHeight = Height.estimated
+        tableView.estimatedRowHeight = Height.factTableEstimated
         tableView.rowHeight = UITableView.automaticDimension
         tableView.tableFooterView = UIView(frame: CGRect.zero)
         return tableView
@@ -34,7 +28,7 @@ class FactsViewController: UIViewController {
     lazy var messageLabel : UILabel = {
         let label = UILabel()
         label.textColor = .gray
-        label.font = UIFont.systemFont(ofSize: 21)
+        label.font = UIFont(name: Font.neue, size: 18)
         label.textAlignment = .center
         label.numberOfLines = 0
         label.sizeToFit()
@@ -93,7 +87,7 @@ extension FactsViewController {
         refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
         refreshControl.backgroundColor = UIColor.lightGray
-        refreshControl.attributedTitle = NSAttributedString(string: "Fetching")
+        refreshControl.attributedTitle = NSAttributedString(string: Message.pullToRefresh)
         refreshControl.tintColor = .white
     }
     
@@ -111,7 +105,7 @@ extension FactsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: FactsTableViewCell.identifier) as? FactsTableViewCell else {
-            fatalError(" Please check TableViewCell identifier")
+            fatalError(" Please check FactsTableViewCell identifier")
         }
         let factsInfo = countryInfo.facts?[indexPath.row]
         cell.facts = factsInfo

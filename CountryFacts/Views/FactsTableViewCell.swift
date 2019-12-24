@@ -9,7 +9,6 @@
 import UIKit
 
 class FactsTableViewCell: UITableViewCell {
-    private let minimumCellHeight: CGFloat = 100
     private lazy var factView = {
         return FactView()
     }()
@@ -20,12 +19,12 @@ class FactsTableViewCell: UITableViewCell {
         addSubview(factView)
         factView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            self.heightAnchor.constraint(greaterThanOrEqualToConstant: minimumCellHeight),
+            self.heightAnchor.constraint(greaterThanOrEqualToConstant: Height.factTableCellMinimum),
             
-            factView.topAnchor.constraint(equalTo: self.topAnchor),
-            factView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            factView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            factView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            factView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+            factView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
+            factView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            factView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
             ])
     }
     
