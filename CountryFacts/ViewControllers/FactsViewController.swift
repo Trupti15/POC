@@ -13,7 +13,6 @@ class FactsViewController: UIViewController {
     private var countryInfo: CountryInfo!
     private var viewModel: CountryViewModel!
     private var refreshControl: UIRefreshControl!
-
     
     //MARK:- Programatically UITableView creation
     private lazy var tableView : UITableView = {
@@ -28,7 +27,7 @@ class FactsViewController: UIViewController {
     lazy var messageLabel : UILabel = {
         let label = UILabel()
         label.textColor = .gray
-        label.font = UIFont(name: Font.neue, size: 18)
+        label.font = UIFont(name: Font.regular, size: 18)
         label.textAlignment = .center
         label.numberOfLines = 0
         label.sizeToFit()

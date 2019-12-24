@@ -9,7 +9,7 @@
 import Foundation
 
 enum Url {
-    static let feedUrl = "https://api.myjson.com/bins/iij5n"
+    static let feedUrl = "https://api.myjson.com/bins/ao19k"
 //    static let feedUrl = "https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json"
     
 }

@@ -12,8 +12,6 @@ import UIKit
 enum Font {
     static let neue     = "Helvetica Neue"
     static let medium   = "HelveticaNeue-Medium"
-    static let bold     = "HelveticaNeue-Bold"
-    static let light    = "HelveticaNeue-Light"
     static let regular  = "HelveticaNeue-Regular"
 }
 

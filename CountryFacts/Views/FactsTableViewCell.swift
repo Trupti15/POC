@@ -17,6 +17,7 @@ class FactsTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         addSubview(factView)
+        
         factView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             self.heightAnchor.constraint(greaterThanOrEqualToConstant: Height.factTableCellMinimum),

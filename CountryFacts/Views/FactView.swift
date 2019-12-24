@@ -11,15 +11,6 @@ import SDWebImage
 
 final class FactView: UIView {
     
-    private lazy var imageView : UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFill
-        imageView.layer.masksToBounds = true
-        imageView.clipsToBounds = true
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
-    }()
-    
     private lazy var titleLabel : UILabel = {
         let label = UILabel()
         label.textColor = .black
@@ -40,6 +31,7 @@ final class FactView: UIView {
         return label
     }()
     
+    //putting title and description in stackview vertically
     lazy var verticalStackView: UIStackView = {
         let stackView = UIStackView(
             arrangedSubviews: [self.titleLabel, self.descriptionLabel]
@@ -52,13 +44,23 @@ final class FactView: UIView {
         return stackView
     }()
     
+    private lazy var imageView : UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFill
+        imageView.layer.masksToBounds = true
+        imageView.clipsToBounds = true
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    
+    //putting imageView and verticalStackView in another horizontal stackView
     lazy var stackView: UIStackView = {
         let stackView = UIStackView(
             arrangedSubviews: [self.imageView, self.verticalStackView]
         )
         stackView.axis = .horizontal
         stackView.spacing = 2*Size.margin
-        stackView.alignment = .center
+        stackView.alignment = .top
         stackView.distribution = .fill
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
@@ -95,7 +97,6 @@ extension FactView {
             guard let self  = self else { return }
             self.imageView.sd_setImage(with: URL(string: imageUrl ?? ""), placeholderImage: UIImage(named: "imageNotAvailable"))
         }
-
     }
     
     var titleText: String? {
